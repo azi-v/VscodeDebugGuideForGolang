@@ -1,4 +1,4 @@
-FROM golang:1.16
+FROM golang:1.18
 
 ENV APP_NAME VscodeDebugGuide
 ENV HTTP_PORT 8080
@@ -10,7 +10,7 @@ RUN go env -w GO111MODULE=on
 RUN go env -w GOPROXY=https://goproxy.cn,direct
 RUN go get ./
 RUN go build -o ${APP_NAME}
-RUN go get -u github.com/go-delve/delve/cmd/dlv
+RUN go get -u github.com/go-delve/delve/cmd/dlv@v1.7.3
 RUN dlv version
 # RUN dlv debug --headless --listen ":2345" --log --api-version 2
 
